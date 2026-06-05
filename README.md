@@ -26,7 +26,7 @@ brew install phnx
 ```bash
 # One-time: install the signing key
 curl -fsSL \
-  https://github.com/protibimbok/pkg-dist/raw/main/public.gpg \
+  https://github.com/protibimbok/pkg-dist/raw/master/public.gpg \
   | sudo gpg --dearmor \
   -o /usr/share/keyrings/protibimbok.gpg
 
