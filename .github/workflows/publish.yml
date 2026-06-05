@@ -51,9 +51,13 @@ jobs:
         id: gpg_check
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: |
           if [ -n "${GPG_PRIVATE_KEY}" ]; then
             echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+          if [ -n "${GPG_PRIVATE_KEY}" ] && [ -z "${GPG_PASSPHRASE}" ]; then
+            echo "::warning::GPG_PASSPHRASE is not set; signing will fail for passphrase-protected keys"
           fi
 
       - name: Import GPG key
@@ -63,6 +67,22 @@ jobs:
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          fingerprint: 652D634877C091343CF314C4A65A5762C418D457
+
+      - name: Verify GPG signing key
+        if: steps.gpg_check.outputs.present == 'true'
+        run: |
+          chmod +x scripts/reexport-apt.sh
+          SIGN_KEY="$(grep '^SignWith:' apt/conf/distributions | awk '{print $2}')"
+          if [ -z "${SIGN_KEY}" ]; then
+            SIGN_KEY="${{ steps.gpg.outputs.keyid }}"
+          fi
+          echo "Checking signing key ${SIGN_KEY}..."
+          gpg --list-secret-keys --keyid-format long
+          if ! echo test | gpg --batch --yes --local-user "${SIGN_KEY}" --clearsign >/dev/null 2>&1; then
+            echo "::error::GPG agent cannot sign with ${SIGN_KEY}" >&2
+            exit 1
+          fi
 
       - name: Configure reprepro signing
         if: steps.gpg_check.outputs.present == 'true'
@@ -97,6 +117,14 @@ jobs:
         run: |
           chmod +x scripts/reexport-apt.sh
           ./scripts/reexport-apt.sh "${{ steps.gpg.outputs.keyid }}"
+
+      - name: Export unsigned apt metadata
+        if: steps.gpg_check.outputs.present != 'true'
+        run: |
+          cd apt
+          sed -i 's/^SignWith:/# SignWith:/' conf/distributions
+          reprepro export stable
+          git checkout -- conf/distributions
 
       - name: Commit and push
         run: |

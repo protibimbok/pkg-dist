@@ -24,6 +24,21 @@ if [ -z "${KEY_ID}" ]; then
   exit 1
 fi
 
+if ! echo test | gpg --batch --yes --local-user "${KEY_ID}" --clearsign >/dev/null 2>&1; then
+  echo "cannot sign with key ${KEY_ID}" >&2
+  echo "Secret keys in agent:" >&2
+  gpg --list-secret-keys --keyid-format long >&2 || true
+  echo >&2
+  echo "Common causes:" >&2
+  echo "  - GPG_PRIVATE_KEY was exported with --export-secret-subkeys but does not include" >&2
+  echo "    the signing key (check: gpg --list-keys --keyid-format long)" >&2
+  echo "  - GPG_PASSPHRASE is missing or wrong in GitHub repo secrets" >&2
+  echo >&2
+  echo "If signing lives on the primary key, export with:" >&2
+  echo "  gpg --armor --export-secret-keys ${KEY_ID} > ci-signing-key.asc" >&2
+  exit 1
+fi
+
 # Ensure SignWith is set exactly once
 if grep -q '^SignWith:' "${DIST_FILE}"; then
   sed -i "s/^SignWith:.*/SignWith: ${KEY_ID}/" "${DIST_FILE}"

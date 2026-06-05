@@ -33,22 +33,35 @@ gpg --armor --export-secret-keys packages@protibimbok.com > master-backup.gpg
 
 Store `master-backup.gpg` offline (encrypted USB, password manager, etc.). **Never commit this file.**
 
-## 4. Export the CI signing subkey
+## 4. Export the CI signing key
 
-List subkeys and note the subkey ID (the one marked `[S]`):
+List keys and find the one with signing capability (`[S]` or `[SC]`):
 
 ```bash
 gpg --list-keys --keyid-format long packages@protibimbok.com
 ```
 
-Export only the subkey:
+**If you have a dedicated signing subkey** (marked `[S]`):
 
 ```bash
-gpg --armor --export-secret-subkeys <SUBKEY_ID> > ci-subkey.asc
+gpg --armor --export-secret-subkeys <SIGNING_SUBKEY_ID> > ci-subkey.asc
 ```
 
-Add `ci-subkey.asc` contents as the `GPG_PRIVATE_KEY` secret in the **pkg-dist** repo.
-Add the subkey passphrase as `GPG_PASSPHRASE`.
+Set `SignWith:` in `apt/conf/distributions` to that subkey ID.
+
+**If signing is on the primary key** (marked `[SC]`, no `[S]` subkey):
+
+`--export-secret-subkeys` only exports subkeys and replaces the primary secret
+with a stub, so CI cannot sign. Export the primary signing secret instead:
+
+```bash
+gpg --armor --export-secret-keys <PRIMARY_KEY_ID> > ci-signing-key.asc
+```
+
+Set `SignWith:` to the primary key ID.
+
+Add the armored export as the `GPG_PRIVATE_KEY` secret in the **pkg-dist** repo.
+Add the key passphrase as `GPG_PASSPHRASE` (required for encrypted keys).
 
 ## 5. Publish the public key
 
@@ -60,7 +73,8 @@ Commit `public.gpg` to the root of pkg-dist.
 
 ## 6. Configure reprepro
 
-Edit `apt/conf/distributions` and set `SignWith:` to your subkey ID:
+Edit `apt/conf/distributions` and set `SignWith:` to your signing key ID
+(the `[S]` subkey, or the primary key if it has `[SC]`):
 
 ```
 SignWith: ABCD1234ABCD1234

@@ -59,7 +59,8 @@ DEB_ARM64=$(download_deb "arm64")
 
 cd "${APT_DIR}"
 ensure_apt_db
-reprepro includedeb stable "${DEB_AMD64}"
-reprepro includedeb stable "${DEB_ARM64}"
+# Index only; export (and signing) happens in reexport-apt.sh or the workflow export step.
+reprepro --export=never includedeb stable "${DEB_AMD64}"
+reprepro --export=never includedeb stable "${DEB_ARM64}"
 
 echo "Added ${PACKAGE} ${VERSION} to apt/stable"
