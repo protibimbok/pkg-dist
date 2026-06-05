@@ -1,0 +1,38 @@
+Package: mgit
+Version: 1.0.1
+Architecture: amd64
+Architecture-Variant: amd64v1
+Maintainer: Saad Khan <sakib.saad.khan@gmail.com>
+Installed-Size: 3700
+Depends: git
+Recommends: openssh-client
+Homepage: https://github.com/protibimbok/mgit
+Priority: optional
+Section: 
+Filename: pool/main/m/mgit/mgit_1.0.1_amd64.deb
+Size: 1565560
+SHA512: e3f4513fc980f5bb0d738832c1938a69b2ea32c8da804992949e4a7cf10ea35e85d4c922af8d4aca4519dd8cd64c3f01a43236fdc229718861cd98fcc434e774
+SHA256: 5c2fdc7419cdd855842ee1a4bd2b612c86225c792f7452541c894cef3437c188
+SHA1: fbdc09ab8183f580432bdf157debe3cbdbdcc967
+MD5sum: 67782a6eb409f080543e8eb13cf25008
+Description: Manage multiple GitHub SSH profiles from one machine
+
+Package: phnx
+Version: 1.0.2
+Architecture: amd64
+Architecture-Variant: amd64v1
+Maintainer: Saad Khan <sakib.saad.khan@gmail.com>
+Installed-Size: 10472
+Depends: nginx
+Recommends: php-fpm
+Homepage: https://github.com/protibimbok/phnx
+Priority: optional
+Section: 
+Filename: pool/main/p/phnx/phnx_1.0.2_amd64.deb
+Size: 4196004
+SHA512: d3e722cc40cba8c8cd7f02732f4a22cd6d8b055496e9a5c99a461711cac7bebf59ccd58ae45354163c5dd2253f7e9273f9025a9b396dfd166561f0ee462016cf
+SHA256: e7d0e8127dd0ab13bbffbd8a6f5e8b6a80d229cd79e182117df6dc36f27982a9
+SHA1: 7870affb400ca9f409db243fcbf6e27082da253f
+MD5sum: 6fcfa3a42f0f6123822a1b2338a4c9fd
+Description: PHP + Nginx local development environment manager
+
