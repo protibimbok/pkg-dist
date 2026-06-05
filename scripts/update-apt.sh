@@ -30,7 +30,7 @@ fi
 
 download_deb() {
   local arch="$1"
-  local deb="${PACKAGE}_${VERSION}_${arch}.deb"
+  local deb="${PACKAGE}_${VERSION}_linux_${arch}.deb"
   local url="https://github.com/${REPO}/releases/download/${TAG}/${deb}"
   curl -fsSL "${url}" -o "${WORK_DIR}/${deb}"
   echo "${WORK_DIR}/${deb}"
