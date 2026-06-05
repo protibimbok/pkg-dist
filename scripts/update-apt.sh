@@ -36,10 +36,29 @@ download_deb() {
   echo "${WORK_DIR}/${deb}"
 }
 
+ensure_apt_db() {
+  local need_rebuild=false
+
+  if [ ! -f db/version ]; then
+    need_rebuild=true
+  elif ! reprepro --export=never list stable >/dev/null 2>&1; then
+    need_rebuild=true
+  fi
+
+  if [ "${need_rebuild}" = true ]; then
+    echo "Rebuilding apt db from pool (reprepro version mismatch or missing db)..."
+    rm -rf db/*
+    while IFS= read -r -d '' deb; do
+      reprepro --export=never includedeb stable "${deb}"
+    done < <(find pool -name '*.deb' -print0 2>/dev/null | sort -z)
+  fi
+}
+
 DEB_AMD64=$(download_deb "amd64")
 DEB_ARM64=$(download_deb "arm64")
 
 cd "${APT_DIR}"
+ensure_apt_db
 reprepro includedeb stable "${DEB_AMD64}"
 reprepro includedeb stable "${DEB_ARM64}"
 
