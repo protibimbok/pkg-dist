@@ -5,4 +5,4 @@ Codename: stable
 Architectures: amd64 arm64
 Components: main
 Description: Protibimbok tool packages
-# SignWith: <keyid>  # injected by CI when GPG_PRIVATE_KEY is set
+SignWith: A65A5762C418D457

@@ -68,7 +68,13 @@ jobs:
         if: steps.gpg_check.outputs.present == 'true'
         run: |
           KEY_ID="${{ steps.gpg.outputs.keyid }}"
-          echo "SignWith: ${KEY_ID}" >> apt/conf/distributions
+          DIST="apt/conf/distributions"
+          if grep -q '^SignWith:' "$DIST"; then
+            sed -i "s/^SignWith:.*/SignWith: ${KEY_ID}/" "$DIST"
+          else
+            sed -i "s/^# SignWith:.*/SignWith: ${KEY_ID}/" "$DIST"
+            grep -q '^SignWith:' "$DIST" || echo "SignWith: ${KEY_ID}" >> "$DIST"
+          fi
 
       - name: Install reprepro
         run: sudo apt-get update && sudo apt-get install -y reprepro
@@ -85,6 +91,12 @@ jobs:
           ./scripts/update-apt.sh \
             "${{ steps.inputs.outputs.package }}" \
             "${{ steps.inputs.outputs.version }}"
+
+      - name: Re-export signed apt metadata
+        if: steps.gpg_check.outputs.present == 'true'
+        run: |
+          chmod +x scripts/reexport-apt.sh
+          ./scripts/reexport-apt.sh "${{ steps.gpg.outputs.keyid }}"
 
       - name: Commit and push
         run: |
