@@ -1,0 +1,14 @@
+{
+  "mgit": {
+    "repo": "protibimbok/mgit",
+    "description": "Manage multiple GitHub SSH profiles from one machine",
+    "homepage": "https://github.com/protibimbok/mgit",
+    "platforms": ["darwin_amd64", "darwin_arm64", "linux_amd64", "linux_arm64", "linux_amd64.deb", "linux_arm64.deb"]
+  },
+  "phnx": {
+    "repo": "protibimbok/phnx",
+    "description": "PHP + Nginx local development environment manager",
+    "homepage": "https://github.com/protibimbok/phnx",
+    "platforms": ["darwin_amd64", "darwin_arm64", "linux_amd64", "linux_arm64", "linux_amd64.deb", "linux_arm64.deb"]
+  }
+}

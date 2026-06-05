@@ -1,0 +1,99 @@
+name: Publish
+
+on:
+  repository_dispatch:
+    types: [release-published]
+  workflow_dispatch:
+    inputs:
+      package:
+        description: Package name (mgit or phnx)
+        required: true
+        type: choice
+        options:
+          - mgit
+          - phnx
+      tag:
+        description: Release tag (e.g. v1.0.1)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve inputs
+        id: inputs
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            PKG='${{ github.event.client_payload.package }}'
+            TAG='${{ github.event.client_payload.tag }}'
+          else
+            PKG='${{ inputs.package }}'
+            TAG='${{ inputs.tag }}'
+          fi
+
+          if [ -z "$PKG" ] || [ -z "$TAG" ]; then
+            echo "package and tag are required" >&2
+            exit 1
+          fi
+
+          VERSION="${TAG#v}"
+          echo "package=$PKG" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+
+      - name: Detect GPG signing
+        id: gpg_check
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: |
+          if [ -n "${GPG_PRIVATE_KEY}" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Import GPG key
+        id: gpg
+        if: steps.gpg_check.outputs.present == 'true'
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Configure reprepro signing
+        if: steps.gpg_check.outputs.present == 'true'
+        run: |
+          KEY_ID="${{ steps.gpg.outputs.keyid }}"
+          echo "SignWith: ${KEY_ID}" >> apt/conf/distributions
+
+      - name: Install reprepro
+        run: sudo apt-get update && sudo apt-get install -y reprepro
+
+      - name: Update Homebrew cask
+        run: |
+          chmod +x scripts/*.sh
+          ./scripts/update-cask.sh \
+            "${{ steps.inputs.outputs.package }}" \
+            "${{ steps.inputs.outputs.version }}"
+
+      - name: Update apt repository
+        run: |
+          ./scripts/update-apt.sh \
+            "${{ steps.inputs.outputs.package }}" \
+            "${{ steps.inputs.outputs.version }}"
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Casks/ apt/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "dist: ${{ steps.inputs.outputs.package }} ${{ steps.inputs.outputs.tag }}"
+          git push

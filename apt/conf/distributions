@@ -1,0 +1,8 @@
+Origin: Protibimbok
+Label: Protibimbok Packages
+Suite: stable
+Codename: stable
+Architectures: amd64 arm64
+Components: main
+Description: Protibimbok tool packages
+# SignWith: <keyid>  # injected by CI when GPG_PRIVATE_KEY is set

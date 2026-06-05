@@ -1,0 +1,5 @@
+# Never commit private key material
+master-backup.gpg
+ci-subkey.asc
+*.asc
+!public.gpg
