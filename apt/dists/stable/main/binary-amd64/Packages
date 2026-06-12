@@ -1,19 +1,19 @@
 Package: mgit
-Version: 1.0.1
+Version: 1.0.3
 Architecture: amd64
 Architecture-Variant: amd64v1
-Maintainer: Saad Khan <sakib.saad.khan@gmail.com>
-Installed-Size: 3700
+Maintainer: Saad <sakib.saad.khan@gmail.com>
+Installed-Size: 3704
 Depends: git
 Recommends: openssh-client
 Homepage: https://github.com/protibimbok/mgit
 Priority: optional
 Section: 
-Filename: pool/main/m/mgit/mgit_1.0.1_amd64.deb
-Size: 1565560
-SHA256: 5c2fdc7419cdd855842ee1a4bd2b612c86225c792f7452541c894cef3437c188
-SHA1: fbdc09ab8183f580432bdf157debe3cbdbdcc967
-MD5sum: 67782a6eb409f080543e8eb13cf25008
+Filename: pool/main/m/mgit/mgit_1.0.3_amd64.deb
+Size: 1566182
+SHA256: cfb73e1f8373de7f2f41b122983d6ece30d4254375bac8f0dd3f08e1c3ba9dfb
+SHA1: c4ae26fb477ce864ddafc50efb65c509aa682917
+MD5sum: 6eaa3d89df96a73b7397feae20682818
 Description: Manage multiple GitHub SSH profiles from one machine
 
 Package: phnx
