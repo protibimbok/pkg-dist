@@ -17,20 +17,20 @@ MD5sum: 6eaa3d89df96a73b7397feae20682818
 Description: Manage multiple GitHub SSH profiles from one machine
 
 Package: phnx
-Version: 1.0.4
+Version: 1.0.5
 Architecture: amd64
 Architecture-Variant: amd64v1
 Maintainer: Saad <sakib.saad.khan@gmail.com>
-Installed-Size: 10480
+Installed-Size: 10488
 Depends: nginx
 Recommends: php-fpm
 Homepage: https://github.com/protibimbok/phnx
 Priority: optional
 Section: 
-Filename: pool/main/p/phnx/phnx_1.0.4_amd64.deb
-Size: 4198764
-SHA256: b84b5c6e937de3f83a16bef3d86782faf06a0c97c98e02c9f062c0fcc79a71d5
-SHA1: a6cb7bf503166dc5b028798388ce876a25c28d38
-MD5sum: 543e26c8655fca15984d20fb92b8f8a3
+Filename: pool/main/p/phnx/phnx_1.0.5_amd64.deb
+Size: 4204478
+SHA256: dd07dfa87e4fa7d0e0e1d4688188aaeada68ee25bef4c2b5f3c529961eeb8831
+SHA1: 521337f11f3529ed5573a7fcaa4de7a86a68bc13
+MD5sum: cd984d5555979a50339ee75abeeedbf0
 Description: PHP + Nginx local development environment manager
 
