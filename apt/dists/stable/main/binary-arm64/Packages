@@ -1,5 +1,5 @@
 Package: mgit
-Version: 1.0.3
+Version: 1.0.4
 Architecture: arm64
 Maintainer: Saad <sakib.saad.khan@gmail.com>
 Installed-Size: 3712
@@ -8,11 +8,11 @@ Recommends: openssh-client
 Homepage: https://github.com/protibimbok/mgit
 Priority: optional
 Section: 
-Filename: pool/main/m/mgit/mgit_1.0.3_arm64.deb
-Size: 1450640
-SHA256: c751c543ddff0e3ab9d380673807b00cc030b62a59fc8a6cfb4b621c33af1b44
-SHA1: 77bc03933cc8445346b927e29720febe2f38e39a
-MD5sum: 433bb61533f8234e77434143893eab3c
+Filename: pool/main/m/mgit/mgit_1.0.4_arm64.deb
+Size: 1451986
+SHA256: b60a9856b8862cf8661236cda87722ed74bc901aef6209fd807a71903d586964
+SHA1: 2f1423e73d579775de550facdd9d01d9b8860f5b
+MD5sum: 235b52e83fc169a5775e44488497ccd1
 Description: Manage multiple GitHub SSH profiles from one machine
 
 Package: phnx
