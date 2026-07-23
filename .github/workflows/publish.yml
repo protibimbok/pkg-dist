@@ -6,12 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       package:
-        description: Package name (mgit or phnx)
+        description: Package name (mgit, phnx, or vpn)
         required: true
         type: choice
         options:
           - mgit
           - phnx
+          - vpn
       tag:
         description: Release tag (e.g. v1.0.1)
         required: true
@@ -102,9 +103,14 @@ jobs:
       - name: Update Homebrew cask
         run: |
           chmod +x scripts/*.sh
-          ./scripts/update-cask.sh \
-            "${{ steps.inputs.outputs.package }}" \
-            "${{ steps.inputs.outputs.version }}"
+          PLATFORMS=$(jq -r --arg p "${{ steps.inputs.outputs.package }}" '.[$p].platforms | join(" ")' scripts/package-metadata.json)
+          if echo "${PLATFORMS}" | grep -q darwin; then
+            ./scripts/update-cask.sh \
+              "${{ steps.inputs.outputs.package }}" \
+              "${{ steps.inputs.outputs.version }}"
+          else
+            echo "Skipping cask update (no macOS builds for ${{ steps.inputs.outputs.package }})"
+          fi
 
       - name: Update apt repository
         run: |

@@ -10,5 +10,11 @@
     "description": "PHP + Nginx local development environment manager",
     "homepage": "https://github.com/protibimbok/phnx",
     "platforms": ["darwin_amd64", "darwin_arm64", "linux_amd64", "linux_arm64", "linux_amd64.deb", "linux_arm64.deb"]
+  },
+  "vpn": {
+    "repo": "protibimbok/vpn-tui",
+    "description": "TUI for managing Surfshark WireGuard connections",
+    "homepage": "https://github.com/protibimbok/vpn-tui",
+    "platforms": ["linux_amd64", "linux_arm64", "linux_amd64.deb", "linux_arm64.deb"]
   }
 }

@@ -24,10 +24,16 @@ need sha256sum
 REPO="$(jq -r --arg p "${PACKAGE}" '.[$p].repo' "${METADATA}")"
 DESC="$(jq -r --arg p "${PACKAGE}" '.[$p].description' "${METADATA}")"
 HOMEPAGE="$(jq -r --arg p "${PACKAGE}" '.[$p].homepage' "${METADATA}")"
+PLATFORMS="$(jq -r --arg p "${PACKAGE}" '.[$p].platforms | join(" ")' "${METADATA}")"
 
 if [ "${REPO}" = "null" ]; then
   echo "unknown package: ${PACKAGE}" >&2
   exit 1
+fi
+
+if ! echo "${PLATFORMS}" | grep -q darwin; then
+  echo "Skipping cask for ${PACKAGE} (no macOS builds)"
+  exit 0
 fi
 
 sha256_of() {

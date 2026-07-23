@@ -19,6 +19,7 @@ Application source code lives in the individual project repos (`mgit`, `phnx`, e
 brew tap protibimbok/pkg-dist
 brew install mgit
 brew install phnx
+# vpn is apt/AUR only (no macOS builds)
 ```
 
 ### apt (Debian / Ubuntu)
@@ -38,15 +39,16 @@ echo "deb [signed-by=/usr/share/keyrings/protibimbok.gpg] \
 sudo apt update
 sudo apt install mgit
 sudo apt install phnx
+sudo apt install vpn
 ```
 
 ## Maintainer workflow
 
 ```
-mgit/phnx tag push
+mgit/phnx/vpn-tui tag push
     → GitHub Release (binaries + .deb)
     → repository_dispatch to pkg-dist
-    → update Casks/
+    → update Casks/ (skipped when no darwin builds)
     → add .deb to apt repo (reprepro)
     → sign Release
     → commit + push
@@ -59,7 +61,7 @@ mgit/phnx tag push
 | `GPG_PRIVATE_KEY` | APT repo signing subkey (armored, for CI) — optional until Phase 4 |
 | `GPG_PASSPHRASE` | Passphrase for the signing subkey |
 
-### Required GitHub secrets (source repos: mgit, phnx)
+### Required GitHub secrets (source repos: mgit, phnx, vpn-tui)
 
 | Secret | Purpose |
 |--------|---------|
