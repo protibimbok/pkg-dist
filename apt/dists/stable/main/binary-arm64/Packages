@@ -33,19 +33,19 @@ MD5sum: 274ec9b52096dea93c0cd1eb152fcf34
 Description: PHP + Nginx local development environment manager
 
 Package: vpn
-Version: 0.1.1
+Version: 0.2.0
 Architecture: arm64
 Maintainer: Saad <sakib.saad.khan@gmail.com>
-Installed-Size: 2055
+Installed-Size: 2077
 Depends: wireguard-tools, curl
 Recommends: iputils-ping
 Homepage: https://github.com/protibimbok/vpn-tui
 Priority: optional
 Section: default
-Filename: pool/main/v/vpn/vpn_0.1.1_arm64.deb
-Size: 1128100
-SHA256: e71fca62aa08cd26b4ca2cc2905d452400ee2dfe811cc3beb0bffdf585626c10
-SHA1: 178560df0da4823ebfd13b2a1d387e40b907de74
-MD5sum: 2bf1d32c492b4a332b0f0d7fd3d95b11
+Filename: pool/main/v/vpn/vpn_0.2.0_arm64.deb
+Size: 1138296
+SHA256: 5877baeaa23c9439a41a4580606d2d36fde5e659fd621c00710935fb4bfa90f5
+SHA1: 28698700bfd1a4a838ac84d1790385825abab529
+MD5sum: 990764a852ec366915ed6772ee0ccc5f
 Description: TUI for managing Surfshark and ProtonVPN WireGuard connections
 
