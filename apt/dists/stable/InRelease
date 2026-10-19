@@ -5,44 +5,44 @@ Origin: Protibimbok
 Label: Protibimbok Packages
 Suite: stable
 Codename: stable
-Date: Wed, 07 Oct 2026 15:02:00 UTC
+Date: Mon, 19 Oct 2026 12:18:35 UTC
 Architectures: amd64 arm64
 Components: main
 Description: Protibimbok tool packages
 MD5Sum:
- 0e3848cc18e86b69f9b442234f529b7b 1586 main/binary-amd64/Packages
- 482dc010531b14c5aaed4ab0487639ed 793 main/binary-amd64/Packages.gz
+ a4df3a8b04b4b72b0ad02ae5c2110193 1586 main/binary-amd64/Packages
+ 8b49f47669d3302a4f702e6321de09d5 795 main/binary-amd64/Packages.gz
  ef04bfcf72812931b0a43c6e604917ef 139 main/binary-amd64/Release
- e8b2768e675cc7bbd3df9e91446e61a6 1585 main/binary-arm64/Packages
- 84e89aaf5162833c1aa8fcbfe55965f5 790 main/binary-arm64/Packages.gz
+ 601f86d1921d7c0b7b04da85ab5d42e4 1586 main/binary-arm64/Packages
+ 627cd57da48bce8b7c7d2f086e6233f8 793 main/binary-arm64/Packages.gz
  1ad68282eeece2ac814e2dfff78843e7 139 main/binary-arm64/Release
 SHA1:
- 147e5c1eeeb0f9d26d1d228eb65e32d5f9a70c1a 1586 main/binary-amd64/Packages
- 98c09893c8e97b503eaf8edaee6a86ed60866802 793 main/binary-amd64/Packages.gz
+ 0a2ba9e97a2e5555c6d89aa05e5168231b790d08 1586 main/binary-amd64/Packages
+ 4563ecf29db75839fd37165d8eb027cd66f8d0a0 795 main/binary-amd64/Packages.gz
  43d60a3c755c85175768b6c595ea6a1ea6a73acd 139 main/binary-amd64/Release
- 19a2626eba3ef0dc29e864c7ab37ddf94b4a0b63 1585 main/binary-arm64/Packages
- 145eb9f2d81f786c67d7f341a08c797b2a973cb2 790 main/binary-arm64/Packages.gz
+ 1316122d2519501f152d8336338a3dfef330b5eb 1586 main/binary-arm64/Packages
+ 73dc065c8a50fd34d954d8fc8981564d2d313e46 793 main/binary-arm64/Packages.gz
  317a8be0adab1dcd6edfbef41e88daa337c51b7b 139 main/binary-arm64/Release
 SHA256:
- e1d5dfb0a33b6082050bf283d291ce107822faa54be273331d1aa690a7aba46f 1586 main/binary-amd64/Packages
- f8964aebfa77ea5a00b6b905e50c8f794273bace362293d74f3016c6cfb09da0 793 main/binary-amd64/Packages.gz
+ 2cf690ffa0a396c46099263561bce836f7264e5d273ba93c1317b3b9de814255 1586 main/binary-amd64/Packages
+ cfbd5025d08d0c2bbbb125db3cad2b0df78d9f93ccaac35b4698500419d47b9e 795 main/binary-amd64/Packages.gz
  40c36842603d84f1f8ca7623fae93a19c0beb0f5a4f026020e568d21672b880e 139 main/binary-amd64/Release
- c031ebd65bb08a9b9dc4f8801b81a4de31a785d636f2b4b38574eea3c1384af5 1585 main/binary-arm64/Packages
- f51e1966c930e081bded8a0c5460dd25f839dbd2e2074297ca3eedd604c443a7 790 main/binary-arm64/Packages.gz
+ 93663260b640e9f6721f8d01bb749b645e91157767f0a962de0c9db4bd6a773f 1586 main/binary-arm64/Packages
+ 991a99039fd99026775c5bd9a1b2c22296db5ce1b553906e400d0025927e319d 793 main/binary-arm64/Packages.gz
  94b51974454b479cecb101663df40b4b6b9f5547fa6d729452314c78257b6d27 139 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEZS1jSHfAkTQ88xTEplpXYsQY1FcFAmrGXugACgkQplpXYsQY
-1FeUdA//U0AFvy62QNSySkW3Smbih8IequY4zH7rYh60lyfqwoE+KxbF7KpWZ9lf
-iedl7hEoxUchOc5cImGwQ7Am2VXAS6IFLqq9e02AWmhjymQI8OOx+EmMSGe6yNaq
-2COZ73LZP1PXxr0cVNgTDCKpNye7MByUTGNY2k4c1OUF8G6CDHJV1DRLnL42LRIF
-PwAwhHT4tDhAVSdPI6nelUttM11ohziQjvOS+botADkJZ8wIV3pSq+Xyk9JfSweI
-tKZaklr9vLq4asdB7TJ4WiUffU7N/NSQOnCO1U0HQegm3x1YnVjgDNe63ZBpnzq5
-E9NU3OeTqnhIOafuzzlnaPowB2UBKAthywxRGh2DteOBkTzNSurAVpdb8ZwFT2By
-xBl2SD+1kamirvRPmKmjHjBMF8j8Rixn0mfnCZrzeGaA+efyLfT9tERJzCnGUe8o
-UE5/d55MzyjPnlNftqm8n7ymrbIQfZr1vZWcA73DNQI3vg81YiwLz+lUdU5u1s7n
-U0za4E++t3e1k2Plg1dZF5bzeGOB38OlMk8MLB+G/gz0t3g+1RbktnUxER26KabM
-/C8n779qPHT9FemkUoMo0+JeeWA2Dui3ecFXMrOoOaNVhnnUYrdMx2C49VNrcoRp
-G1Ch8qbZYZzwhU4I6xhmvsNUyVUq+20gOiLOkOJn/s1+kABq0rs=
-=MsZ+
+iQIzBAEBCgAdFiEEZS1jSHfAkTQ88xTEplpXYsQY1FcFAmrWCpsACgkQplpXYsQY
+1FeZOw//eTdU1WdrelznqGh2/G5Stuah3e0d+3BQAdNKEo6Xgr7iH80yzoapuHRH
+wqO7u8B+0r3on09+SP1UirfquNDkOywSn+ZGqnKqFgJCbaZ4NHQjMTjR7F4dyYjq
+b7iMsb4fYxXhyv/HrkUcw5QV+0zYlP4mKp2JIUHcknKHixX/E+dCFfHKsiFdyl0p
+JITnEj2xtpycID+Vktk4EH9dtMtj7+7dLKpG4V0MgIhvTJEf3WIHaWVpWxpoK6A/
+EI29oiD2WuoLuxaVLXM0ILuIw/KFcjQoYSPFLe4ZakXsMB0TMulsG5bacvaSVuSN
++2P68xov4me6Dv4C/dh4MsFgPjblJCqvX853Dwil+yhuso6RN30uHWvhmx9O6YpR
+HwA3QRs2Y9jHbJkCtJ7ZcCQLKBL3iTUERYaOeHWsE8EI3irC/9e6j2uq6BpLU5cN
+WYvSHN/BhZEl0fwYKylqoJAxq6D3n+yKf1h12npzZX6HWMTYQcrHpLLGHiaqtHMr
+OfAIx0eTPXKHOpxG1Sk47+i5KO149lZ/dhQsbjKi7YMP9aYR47NNH5PxLYeKcQBt
+pIr1OzzKkXLgbFg0UdXLEY8K1Ql0qMLqQw+wxSPkOxIV3Q4+ozioa9lBSZkddQl3
+suCcLKDoXks2Qjf3CCTMv3kW+rgaOZfj6j0vSfwxemiuVkkxkxI=
+=3Ary
 -----END PGP SIGNATURE-----
